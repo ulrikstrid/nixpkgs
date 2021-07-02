@@ -1,10 +1,12 @@
-{ lib, stdenv, fetchFromGitHub, obs-studio }:
+{ lib, stdenv, fetchFromGitHub, make, obs-studio }:
 
 stdenv.mkDerivation rec {
   pname = "obs-droidcam";
   version = "1.2.1";
 
   buildInputs = [ obs-studio ];
+
+  nativeBuildInputs = [ make ];
 
   src = fetchFromGitHub {
     owner = "dev47apps";
@@ -14,7 +16,7 @@ stdenv.mkDerivation rec {
   };
 
   meta = with lib; {
-    description = "onnect your phone and get high quality audio & video just like a regular camera source";
+    description = "connect your phone and get high quality audio & video just like a regular camera source";
     homepage = "https://www.dev47apps.com/obs/";
     maintainers = with maintainers; [ ulrikstrid ];
     license = licenses.gpl2;

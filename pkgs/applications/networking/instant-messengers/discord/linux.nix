@@ -81,7 +81,8 @@ stdenv.mkDerivation rec {
     wrapProgram $out/opt/${binaryName}/${binaryName} \
         "''${gappsWrapperArgs[@]}" \
         --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}/" \
-        --prefix LD_LIBRARY_PATH : ${libPath}:$out/opt/${binaryName}
+        --prefix LD_LIBRARY_PATH : ${libPath}:$out/opt/${binaryName} \
+        --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer"
 
     ln -s $out/opt/${binaryName}/${binaryName} $out/bin/
     # Without || true the install would fail on case-insensitive filesystems

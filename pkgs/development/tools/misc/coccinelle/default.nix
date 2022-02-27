@@ -9,11 +9,11 @@ stdenv.mkDerivation rec {
     sha256 = "0k0x4qnxzj8fymkp6y9irggcah070hj7hxq8l6ddj8ccpmjbhnsb";
   };
 
-  buildInputs = with ocamlPackages; [
-    ocaml findlib menhir
-    ocaml_pcre parmap stdcompat
-    python3 ncurses pkg-config
-  ];
+  strictDeps = true;
+
+  nativeBuildInputs = with ocamlPackages;  [ ocaml findlib menhir python3 pkg-config ];
+
+  buildInputs = with ocamlPackages; [ ocaml_pcre parmap stdcompat ncurses ];
 
   doCheck = false;
 

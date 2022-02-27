@@ -14,7 +14,7 @@ buildDunePackage rec {
   minimumOCamlVersion = "4.07";
   useDune2 = true;
 
-  strictDeps = !doCheck;
+  strictDeps = true;
 
   propagatedBuildInputs = [ bigarray-compat ];
 

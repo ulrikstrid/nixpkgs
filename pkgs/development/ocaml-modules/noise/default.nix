@@ -29,7 +29,7 @@ buildDunePackage rec {
 
   minimumOCamlVersion = "4.04";
 
-  nativeBuildInputs = [
+  buildInputs = [
     ppxlib
     ppx_deriving
     ppx_let

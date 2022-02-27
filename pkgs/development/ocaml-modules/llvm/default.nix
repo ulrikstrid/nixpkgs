@@ -1,6 +1,13 @@
-{ stdenv, lib, python2, cmake, libllvm, ocaml, findlib, ctypes }:
+{ stdenv, lib, python2, python3, cmake, libllvm, ocaml, findlib, ctypes }:
 
-let version = lib.getVersion libllvm; in
+let
+  version = lib.getVersion libllvm;
+  # Python 2 for versions lower than 13
+  Python = if builtins.compareVersions version "13" < 0 then
+    python2
+  else
+    python3;
+in
 
 stdenv.mkDerivation {
   pname = "ocaml-llvm";
@@ -8,7 +15,7 @@ stdenv.mkDerivation {
 
   inherit (libllvm) src;
 
-  nativeBuildInputs = [ cmake python2 ocaml findlib ];
+  nativeBuildInputs = [ cmake ocaml findlib Python ];
   buildInputs = [ ctypes ];
   propagatedBuildInputs = [ libllvm ];
 

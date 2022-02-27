@@ -18,6 +18,8 @@ stdenv.mkDerivation {
     sha256 = "1zwv0ixkigh1gzk5n49rwvz2f2m62jdkkqg40j7dclg4gri7691f";
   };
 
+  strictDeps = true;
+
   nativeBuildInputs = [ pkg-config ocaml findlib ocamlbuild topkg ];
   buildInputs = [ topkg ];
   propagatedBuildInputs = [ SDL2 ctypes ];

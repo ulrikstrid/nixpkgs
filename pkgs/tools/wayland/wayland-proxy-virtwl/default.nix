@@ -23,11 +23,8 @@ ocamlPackages.buildDunePackage rec {
   useDune2 = true;
   minimumOCamlVersion = "4.08";
 
-  nativeBuildInputs = [
-    buildPackages.ocamlPackages.ppx_cstruct
-  ];
-
   buildInputs = with ocamlPackages; [
+    ppx_cstruct
     wayland
     cmdliner
     logs

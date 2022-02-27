@@ -31,11 +31,16 @@ coq.ocamlPackages.buildDunePackage rec {
   ];
 
   buildInputs = with coq.ocamlPackages; [
-    coq
-    menhir
+    bisect_ppx
+    cmdliner
+    core
+    fpath
+    data-encoding
+    getopt
+    linenoise
     menhirLib
-    qcheck
     ocamlgraph
+    pprint
     ppx_deriving
     ppx_deriving_yojson
     ppx_expect
@@ -69,9 +74,9 @@ coq.ocamlPackages.buildDunePackage rec {
     irmin-pack
   ];
 
-  checkInputs = [
+  checkInputs = with coq.ocamlPackages; [
     cacert
-    coq.ocamlPackages.ca-certs
+    ca-certs
   ];
 
   doCheck = false; # Tests fail, but could not determine the reason

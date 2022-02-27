@@ -26,12 +26,7 @@ let
         sha256 = "sha256-Y2RcYvJOSqppmxxG8IZ5GlFkXCOIQU+1jJZ6j+PBHC4";
       };
 
-      nativeBuildInputs = [
-        ocamlPackages.ppx_deriving
-        ocamlPackages.ppx_deriving_yojson
-        ocamlPackages.ppx_sexp_conv
-        ocamlPackages.ppx_sexp_message
-      ] ++ extraNativeInputs;
+      nativeBuildInputs = extraNativeInputs;
 
       buildInputs = [
         ocamlPackages.core
@@ -39,6 +34,10 @@ let
         ocamlPackages.mparser
         ocamlPackages.mparser-pcre
         ocamlPackages.angstrom
+        ocamlPackages.ppx_deriving
+        ocamlPackages.ppx_deriving_yojson
+        ocamlPackages.ppx_sexp_conv
+        ocamlPackages.ppx_sexp_message
       ] ++ extraBuildInputs;
 
       checkInputs = [ cacert ];
@@ -83,6 +82,9 @@ mkCombyPackage {
     ocamlPackages.conduit-lwt-unix
     ocamlPackages.lwt_react
     ocamlPackages.tls
+    ocamlPackages.ppx_jane
+    ocamlPackages.ppx_expect
+    ocamlPackages.dune-configurator
     combyKernel
     combySemantic
   ] ++ (if !stdenv.isAarch32 && !stdenv.isAarch64 then
@@ -93,9 +95,6 @@ mkCombyPackage {
   extraNativeInputs = [
     autoconf
     pkg-config
-    ocamlPackages.ppx_jane
-    ocamlPackages.ppx_expect
-    ocamlPackages.dune-configurator
   ];
 
 }

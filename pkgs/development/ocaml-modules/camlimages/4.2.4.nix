@@ -30,6 +30,8 @@ stdenv.mkDerivation rec {
     sha256 = "17hvsql5dml7ialjcags8wphs7w6z88b2rgjir1382bg8vn62bkr";
   };
 
+  strictDeps = true;
+
   nativeBuildInputs = [
     omake
     ocaml

@@ -16,7 +16,8 @@ buildDunePackage rec {
 
   useDune2 = true;
 
-  buildInputs = [ astring cmdliner cppo fpath result tyxml ];
+  nativeBuildInputs = [ cppo ];
+  buildInputs = [ astring cmdliner fpath result tyxml ];
 
   checkInputs = [ alcotest markup yojson sexplib jq ];
   doCheck = lib.versionAtLeast ocaml.version "4.05";

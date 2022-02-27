@@ -41,10 +41,12 @@ stdenv.mkDerivation rec {
 
   preConfigure = lib.optionalString stdenv.cc.isClang "configureFlagsArray=(\"--with-cpp=clang -E -C\")";
 
-  nativeBuildInputs = [ autoconf wrapGAppsHook ];
+  strictDeps = true;
+
+  nativeBuildInputs = [ autoconf wrapGAppsHook ] ++ (with ocamlPackages; [ ocaml findlib ]);
 
   buildInputs = with ocamlPackages; [
-    ncurses ocaml findlib ltl2ba ocamlgraph yojson menhirLib camlzip
+    ncurses ltl2ba ocamlgraph yojson menhirLib camlzip
     lablgtk3 lablgtk3-sourceview3 coq graphviz zarith apron why3 mlgmpidl doxygen
     gdk-pixbuf
   ];

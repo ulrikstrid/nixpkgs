@@ -17,11 +17,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256:1cd7475n1mxhq482aidmhh27mq5p2vmb8d9fkb1mlza9pz5z66yq";
   };
 
+  strictDeps = !doCheck;
+
   nativeBuildInputs = [ ocaml findlib ocamlbuild ];
   checkInputs = [ qtest ounit ];
   propagatedBuildInputs = [ num ];
-
-  strictDeps = !doCheck;
 
   inherit doCheck;
   checkTarget = "test";

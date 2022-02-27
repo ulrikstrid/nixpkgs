@@ -26,8 +26,11 @@ buildDunePackage {
   };
 
   nativeBuildInputs = [
-    cmdliner
     menhir
+  ];
+
+  buildInputs = [
+    cmdliner
     ppxlib
   ];
 

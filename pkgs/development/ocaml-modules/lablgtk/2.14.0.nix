@@ -16,6 +16,8 @@ stdenv.mkDerivation (rec {
     sha256 = "1fnh0amm7lwgyjdhmlqgsp62gwlar1140425yc1j6inwmgnsp0a9";
   };
 
+  strictDeps = true;
+
   nativeBuildInputs = [ pkg-config ocaml findlib camlp4 ];
   buildInputs = [ gtk2 libgnomecanvas gtksourceview ];
 

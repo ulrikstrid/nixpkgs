@@ -15,10 +15,11 @@ buildDunePackage rec {
     sha256 = "1fymmvk616wv5xkwfdmqibdgfl47ry6idc5wfh20a3mz9mpaa13s";
   };
 
-  buildInputs = [ ppxlib ];
+  nativeBuildInputs = [ reason ];
+
+  buildInputs = [ ppxlib reason ];
 
   propagatedBuildInputs = [
-    reason
     yojson
   ];
 

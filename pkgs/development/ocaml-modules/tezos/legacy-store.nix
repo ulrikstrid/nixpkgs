@@ -6,6 +6,9 @@
 , tezos-validation
 , tezos-shell-services
 , tezos-protocol-compiler
+, tezos-protocol-updater
+, ocp-ocamlres
+, pprint
 , lwt-watcher
 , alcotest-lwt
 }:
@@ -20,7 +23,10 @@ buildDunePackage {
     tezos-lmdb
     tezos-validation
     tezos-shell-services
+    tezos-protocol-updater
     lwt-watcher
+    ocp-ocamlres
+    pprint
   ];
 
   nativeBuildInputs = [

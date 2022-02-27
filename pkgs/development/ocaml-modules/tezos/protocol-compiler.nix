@@ -19,10 +19,14 @@ buildDunePackage {
 
   minimalOCamlVersion = "4.12";
 
-  propagatedBuildInputs = [
+  nativeBuildInputs = [
+    ocp-ocamlres
+  ];
+
+  buildInputs = [
+    ocp-ocamlres
     tezos-version
     tezos-protocol-environment
-    ocp-ocamlres
     pprint
   ];
 

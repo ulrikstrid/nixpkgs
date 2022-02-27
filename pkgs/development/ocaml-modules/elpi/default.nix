@@ -24,7 +24,9 @@ buildDunePackage rec {
 
   minimumOCamlVersion = "4.04";
 
-  buildInputs = [ perl ncurses ];
+
+  nativeBuildInputs = [ perl camlp5 ];
+  buildInputs = [ ncurses ];
 
   propagatedBuildInputs = [ camlp5 re ]
   ++ (if lib.versionAtLeast version "1.13"

@@ -10,8 +10,14 @@ stdenv.mkDerivation rec {
     sha256 = "sha256:1rqyypzlvagrn43ykl0c5wxyvnry5fl1ykn3xcvlzgghk96yq3jq";
   };
 
+  nativeBuildInputs = with ocamlPackages;  [
+    ocaml findlib menhir
+    # Coq Support
+    coqPackages.coq
+  ];
+
   buildInputs = with ocamlPackages; [
-    ocaml findlib ocamlgraph zarith menhir
+    ocamlgraph zarith
     # Emacs compilation of why3.el
     emacs
     # Documentation
@@ -23,7 +29,7 @@ stdenv.mkDerivation rec {
     # S-expression output for why3pp
     ppx_deriving ppx_sexp_conv
     # Coq Support
-    coqPackages.coq coqPackages.flocq
+    coqPackages.flocq
   ];
 
   propagatedBuildInputs = with ocamlPackages; [ camlzip menhirLib num re sexplib ];

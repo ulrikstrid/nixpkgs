@@ -6,7 +6,10 @@ buildDunePackage rec {
 
   inherit (metrics) version useDune2 src;
 
-  propagatedBuildInputs = [ gnuplot ocaml_lwt metrics mtime uuidm ];
+  # gnuplot is needed for tests
+  nativeBuildInputs = [ gnuplot ];
+
+  propagatedBuildInputs = [ ocaml_lwt metrics mtime uuidm ];
 
   checkInputs = [ metrics-lwt ];
 

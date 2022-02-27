@@ -11,8 +11,9 @@ stdenv.mkDerivation rec {
     sha256 = "0l81126i2qkz11fs5yrjdgymnqgjcs5avb7f951h61yh1s68jpnn";
   };
 
-  nativeBuildInputs = [ pkg-config opaline ];
-  buildInputs = [ ocaml ];
+  strictDeps = true;
+
+  nativeBuildInputs = [ pkg-config opaline ocaml ];
 
   installTargets = "ott.install";
 

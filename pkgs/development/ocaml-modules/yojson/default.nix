@@ -1,4 +1,4 @@
-{ lib, fetchurl, buildDunePackage, cppo, easy-format, biniou }:
+{ lib, fetchurl, buildDunePackage, cppo, easy-format, biniou, alcotest }:
 
 buildDunePackage rec {
   pname = "yojson";
@@ -12,6 +12,9 @@ buildDunePackage rec {
 
   nativeBuildInputs = [ cppo ];
   propagatedBuildInputs = [ easy-format biniou ];
+  checkInputs = [ alcotest ];
+
+  doCheck = true;
 
   meta = with lib; {
     description = "An optimized parsing and printing library for the JSON format";

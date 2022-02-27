@@ -13,6 +13,9 @@ stdenv.mkDerivation rec {
     substituteInPlace curses/curses.ml --replace 'pp gcc' "pp $CC"
   '';
 
+  # For some reason we can't find ocamlc with this set to true
+  strictDeps = false;
+
   buildInputs = [ ocamlPackages.ocaml ncurses remind ocamlPackages.camlp4 ];
 
   preferLocalBuild = true;

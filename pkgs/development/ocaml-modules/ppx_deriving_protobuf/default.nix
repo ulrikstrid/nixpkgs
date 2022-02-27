@@ -13,7 +13,8 @@ buildDunePackage rec {
     sha256 = "1dc1vxnkd0cnrgac5v3zbaj2lq1d2w8118mp1cmsdxylp06yz1sj";
   };
 
-  buildInputs = [ cppo ppxlib ppx_deriving ];
+  nativeBuildInputs = [ cppo ];
+  buildInputs = [ ppxlib ppx_deriving ];
 
   meta = with lib; {
     homepage = "https://github.com/ocaml-ppx/ppx_deriving_protobuf";

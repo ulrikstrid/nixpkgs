@@ -12,7 +12,10 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile.in --replace "\\n" ""
   '';
 
-  buildInputs = with ocamlPackages; [ ocaml findlib functory ];
+  strictDeps = true;
+
+  nativeBuildInputs = with ocamlPackages; [ ocaml findlib ];
+  buildInputs = with ocamlPackages; [ functory ];
 
   meta = with lib; {
     description = "An open source model checker for verifying safety properties of array-based systems";

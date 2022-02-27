@@ -39,7 +39,7 @@ buildDunePackage rec {
     ocaml-freestanding
   ];
 
-  strictDeps = !doCheck;
+  strictDeps = true;
 
   doCheck = true;
   checkInputs = [

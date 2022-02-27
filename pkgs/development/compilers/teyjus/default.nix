@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
 
   patches = [ ./fix-lex-to-flex.patch ];
 
-  buildInputs = [ omake ocaml flex bison ];
+  strictDeps = true;
+
+  nativeBuildInputs = [ omake ocaml flex bison ];
 
   hardeningDisable = [ "format" ];
 

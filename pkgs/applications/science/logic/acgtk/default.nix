@@ -1,7 +1,6 @@
-{ lib, stdenv, fetchurl, dune_2, ocamlPackages }:
+{ lib, stdenv, fetchurl, ocamlPackages }:
 
-stdenv.mkDerivation {
-
+ocamlPackages.buildDunePackage {
   pname = "acgtk";
   version = "1.5.2";
 
@@ -10,14 +9,18 @@ stdenv.mkDerivation {
     sha256 = "09yax7dyw8kgwzlb69r9d20y7rrymzwi3bbq2dh0qdq01vjz2xwq";
   };
 
-  buildInputs = [ dune_2 ] ++ (with ocamlPackages; [
-    ocaml findlib ansiterminal cairo2 cmdliner fmt logs menhir menhirLib mtime yojson
+  useDune2 = true;
+
+  nativeBuildInputs = with ocamlPackages; [ menhir ];
+
+  buildInputs = (with ocamlPackages; [
+    ansiterminal cairo2 cmdliner fmt logs menhirLib mtime yojson
   ]);
 
-  buildPhase = "dune build --profile=release";
-
-  installPhase = ''
-    dune install --prefix $out --libdir $OCAMLFIND_DESTDIR
+  buildPhase = ''
+    runHook preBuild
+    dune build --release ''${enableParallelBuilding:+-j $NIX_BUILD_CORES}
+    runHook postBuild
   '';
 
   meta = with lib; {

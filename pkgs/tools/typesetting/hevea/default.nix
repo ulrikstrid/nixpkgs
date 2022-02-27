@@ -9,7 +9,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-8Ym62l0+WzWFXf39tbJwyZT8eiNmsBJQ12E1mtZsnss=";
   };
 
-  buildInputs = with ocamlPackages; [ ocaml ocamlbuild ];
+  strictDeps = true;
+
+  nativeBuildInputs = with ocamlPackages; [ ocaml ocamlbuild ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

@@ -3,6 +3,9 @@
 , tezos-stdlib
 , tezos-protocol-010-PtGRANAD
 , tezos-protocol-updater
+, tezos-protocol-environment
+, ocp-ocamlres
+, pprint
 }:
 
 buildDunePackage {
@@ -10,9 +13,17 @@ buildDunePackage {
   inherit (tezos-stdlib) version useDune2;
   src = "${tezos-stdlib.base_src}/src";
 
+  nativeBuildInputs = [ tezos-protocol-updater ];
+
+  buildInputs = [
+    tezos-protocol-environment
+    tezos-protocol-updater
+    ocp-ocamlres
+    pprint
+  ];
+
   propagatedBuildInputs = [
     tezos-protocol-010-PtGRANAD
-    tezos-protocol-updater
   ];
 
   doCheck = true;

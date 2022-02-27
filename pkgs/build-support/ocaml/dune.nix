@@ -1,6 +1,6 @@
 { lib, stdenv, ocaml, findlib, dune_1, dune_2 }:
 
-{ pname, version, nativeBuildInputs ? [], buildInputs ? [], checkInputs ? [], enableParallelBuilding ? true, doCheck ? true, ... }@args:
+{ pname, version, nativeBuildInputs ? [], buildInputs ? [], checkInputs ? [], enableParallelBuilding ? true, doCheck ? false, ... }@args:
 
 let Dune = if args.useDune2 or false then dune_2 else dune_1; in
 
@@ -30,6 +30,8 @@ stdenv.mkDerivation ({
     dune install --prefix $out --libdir $OCAMLFIND_DESTDIR ${pname}
     runHook postInstall
   '';
+
+  strictDeps = true;
 
 } // (builtins.removeAttrs args [ "minimalOCamlVersion" ]) // {
 

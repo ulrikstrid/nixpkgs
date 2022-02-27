@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     sha256 = "1w5z3ns5xxmhmp8r4x2kjmy3clqam935gmvx82imyxrr1bamx6gf";
   };
 
-  buildInputs = [ ocaml isabelle cvc3 perl wget which ];
+  strictDeps = true;
+
+  nativeBuildInputs = [ ocaml isabelle cvc3 perl wget which ];
 
   installPhase = ''
     mkdir -pv "$out"

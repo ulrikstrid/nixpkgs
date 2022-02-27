@@ -37,8 +37,7 @@ buildDunePackage rec {
     inherit (params) sha256;
   };
 
-  # This currently fails with dune
-  strictDeps = false;
+  strictDeps = true;
 
   nativeBuildInputs = [ cppo ];
   buildInputs = [ ppxlib ];

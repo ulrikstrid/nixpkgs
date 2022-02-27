@@ -15,8 +15,7 @@ buildDunePackage rec {
     sha256 = "283814ea21adc345c4d59cfcb17b2f7c1185004ecaecc3871557c961874c84f5";
   };
 
-  nativeBuildInputs = [ ppx_cstruct ];
-  propagatedBuildInputs = [ stdlib-shims cstruct lwt ];
+  propagatedBuildInputs = [ stdlib-shims ppx_cstruct cstruct lwt ];
 
   doCheck = true;
   checkInputs = [ ounit ];

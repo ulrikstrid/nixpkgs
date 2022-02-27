@@ -23,8 +23,7 @@ stdenv.mkDerivation rec {
   buildInputs = [ ocaml_lwt ];
   checkInputs = [ ounit fileutils ];
 
-  # Otherwise checkInputs can't be found
-  strictDeps = false;
+  strictDeps = !doCheck;
 
   configureFlags = [ "--enable-lwt"
     (lib.optionalString doCheck "--enable-tests") ];

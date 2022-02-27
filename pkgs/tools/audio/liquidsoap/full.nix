@@ -49,17 +49,19 @@ stdenv.mkDerivation {
 
   configureFlags = [ "--localstatedir=/var" ];
 
-  nativeBuildInputs = [ makeWrapper pkg-config ];
+  nativeBuildInputs =
+    [ makeWrapper pkg-config which
+      ocamlPackages.ocaml ocamlPackages.findlib ocamlPackages.menhir
+    ];
   buildInputs =
-    [ which ocamlPackages.ocaml ocamlPackages.findlib
-      libao portaudio alsa-lib libpulseaudio libjack2
+    [ libao portaudio alsa-lib libpulseaudio libjack2
       libsamplerate libmad taglib lame libogg
       libvorbis speex libtheora libopus zlib
       faad2 flac ladspaH ffmpeg frei0r dssi
       ocamlPackages.xmlm ocamlPackages.ocaml_pcre
       ocamlPackages.camomile
       ocamlPackages.fdkaac
-      ocamlPackages.srt ocamlPackages.sedlex_2 ocamlPackages.menhir ocamlPackages.menhirLib
+      ocamlPackages.srt ocamlPackages.sedlex_2 ocamlPackages.menhirLib
     ];
 
   hardeningDisable = [ "format" "fortify" ];

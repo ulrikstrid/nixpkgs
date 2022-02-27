@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-/eOiebMFHgrurtrSHPlgZO3xmmxBOUmyAzswXZLd3Yc=";
   };
 
-  buildInputs = [ rsync ] ++ (with ocamlPackages; [ ocaml ocamlbuild findlib ]);
+  nativeBuildInputs = [ rsync ] ++ (with ocamlPackages; [ ocaml ocamlbuild findlib ]);
 
   installPhase = ''
     mkdir -p $out/bin

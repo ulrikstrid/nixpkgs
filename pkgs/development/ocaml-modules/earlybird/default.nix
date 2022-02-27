@@ -19,7 +19,9 @@ buildDunePackage rec {
     sha256 = "1pwzhcr3pw24ra4j4d23vz71h0psz4xkyp7b12l2wl1slxzjbrxa";
   };
 
-  buildInputs = [ cmdliner dap fmt iter logs lru lwt_ppx lwt_react menhir menhirLib path_glob ppx_deriving_yojson ];
+  nativeBuildInputs = [ menhir ];
+
+  buildInputs = [ cmdliner dap fmt iter logs lru lwt_ppx lwt_react menhirLib path_glob ppx_deriving_yojson ];
 
   meta = {
     homepage = "https://github.com/hackwaly/ocamlearlybird";

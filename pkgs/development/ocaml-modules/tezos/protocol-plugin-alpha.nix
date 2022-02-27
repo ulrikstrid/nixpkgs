@@ -1,7 +1,10 @@
 { lib
 , buildDunePackage
 , tezos-stdlib
+, tezos-base
 , tezos-protocol-alpha
+, tezos-protocol-environment
+, tezos-protocol-environment-sigs
 }:
 
 buildDunePackage {
@@ -10,7 +13,10 @@ buildDunePackage {
   src = "${tezos-stdlib.base_src}/src";
 
   propagatedBuildInputs = [
+    tezos-base
     tezos-protocol-alpha
+    tezos-protocol-environment
+    tezos-protocol-environment-sigs
   ];
 
   doCheck = true;

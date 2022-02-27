@@ -23,6 +23,8 @@ stdenv.mkDerivation {
   pname = "lablgtk";
   inherit (param) version src;
 
+  strictDeps = true;
+
   nativeBuildInputs = [ pkg-config ocaml findlib ];
   buildInputs = [ gtk2 libgnomecanvas gtksourceview ];
 

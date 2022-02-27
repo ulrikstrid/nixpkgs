@@ -3,6 +3,8 @@
 , tezos-stdlib
 , tezos-protocol-updater
 , tezos-protocol-compiler
+, ocp-ocamlres
+, pprint
 }:
 
 buildDunePackage {
@@ -10,8 +12,10 @@ buildDunePackage {
   inherit (tezos-stdlib) version useDune2;
   src = "${tezos-stdlib.base_src}/src/lib_validation";
 
-  propagatedBuildInputs = [
+  buildInputs = [
     tezos-protocol-updater
+    ocp-ocamlres
+    pprint
   ];
 
   nativeBuildInputs = [

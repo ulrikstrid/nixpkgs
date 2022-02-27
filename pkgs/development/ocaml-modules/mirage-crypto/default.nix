@@ -27,7 +27,7 @@ buildDunePackage rec {
     ocaml-freestanding
   ];
 
-  strictDeps = !doCheck;
+  strictDeps = true;
 
   meta = with lib; {
     homepage = "https://github.com/mirage/mirage-crypto";

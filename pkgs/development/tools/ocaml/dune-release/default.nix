@@ -19,10 +19,10 @@ in buildDunePackage rec {
     sha256 = "1r6bz1zz1al5y762ws3w98d8bnyi5ipffajgczixacmbrxvp3zgx";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ] ++ runtimeInputs;
   buildInputs = [ curly fmt cmdliner re opam-format opam-state opam-core
                   rresult logs odoc bos yojson astring fpath ];
-  checkInputs = [ alcotest ] ++ runtimeInputs;
+  checkInputs = [ alcotest odoc ] ++ runtimeInputs;
   doCheck = true;
 
   useDune2 = true;

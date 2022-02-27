@@ -12,9 +12,11 @@ stdenv.mkDerivation {
 
   patches = [ ./ocaml-includes.patch ./ocaml-3.12.patch ];
 
-  buildInputs = [ ocaml ncurses ];
+  strictDeps = true;
 
-  nativeBuildInputs = [ makeWrapper ];
+  buildInputs = [ ncurses ];
+
+  nativeBuildInputs = [ makeWrapper ocaml ];
 
   makeFlags = [ "CAML_INCLUDES=${ocaml}/lib/ocaml/caml" ];
 

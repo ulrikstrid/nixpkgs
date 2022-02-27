@@ -50,11 +50,11 @@ in
       $out/share/satysfi
     '';
 
-    nativeBuildInputs = [ ruby dune_2 ];
+    nativeBuildInputs = [ ruby ] ++ (with ocamlPackages; [ dune_2 ocaml findlib menhir cppo ]);
 
     buildInputs = [ camlpdf otfm yojson-with-position ] ++ (with ocamlPackages; [
-      ocaml findlib menhir menhirLib
-      batteries camlimages core_kernel ppx_deriving uutf omd cppo re
+      menhirLib
+      batteries camlimages core_kernel ppx_deriving uutf omd re
     ]);
 
     installPhase = ''

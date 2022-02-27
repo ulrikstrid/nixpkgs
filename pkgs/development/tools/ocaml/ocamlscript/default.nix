@@ -7,14 +7,14 @@ stdenv.mkDerivation rec {
     sha256 = "1v1i24gijxwris8w4hi95r9swld6dm7jbry0zp72767a3g5ivlrd";
   };
 
-  propagatedBuildInputs = [ ocaml findlib camlp4 ];
+  nativeBuildInputs = [ ocaml findlib camlp4 ];
 
   patches = [ ./Makefile.patch ];
 
   buildFlags = [ "PREFIX=$(out)" ];
   installFlags = [ "PREFIX=$(out)" ];
 
-  preInstall = "mkdir $out/bin";
+  preInstall = "mkdir -p $out/bin";
   createFindlibDestdir = true;
 
   meta = with lib; {

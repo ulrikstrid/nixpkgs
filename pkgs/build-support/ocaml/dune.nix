@@ -1,6 +1,6 @@
 { lib, stdenv, ocaml, findlib, dune_1, dune_2 }:
 
-{ pname, version, nativeBuildInputs ? [], enableParallelBuilding ? true, ... }@args:
+{ pname, version, nativeBuildInputs ? [], buildInputs ? [], checkInputs ? [], enableParallelBuilding ? true, doCheck ? true, ... }@args:
 
 let Dune = if args.useDune2 or false then dune_2 else dune_1; in
 
@@ -36,6 +36,10 @@ stdenv.mkDerivation ({
   name = "ocaml${ocaml.version}-${pname}-${version}";
 
   nativeBuildInputs = [ ocaml Dune findlib ] ++ nativeBuildInputs;
+
+  buildInputs = buildInputs ++ (if doCheck then checkInputs else []);
+
+  inherit doCheck;
 
   meta = (args.meta or {}) // { platforms = args.meta.platforms or ocaml.meta.platforms; };
 

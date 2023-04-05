@@ -8,9 +8,7 @@ buildDunePackage rec {
   pname = "lacaml";
   version = "11.0.8";
 
-  useDune2 = true;
-
-  minimumOCamlVersion = "4.08";
+    minimumOCamlVersion = "4.08";
 
   src = fetchurl {
     url = "https://github.com/mmottl/lacaml/releases/download/${version}/lacaml-${version}.tbz";

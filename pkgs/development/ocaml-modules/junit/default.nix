@@ -14,7 +14,6 @@ buildDunePackage (rec {
     tyxml
   ];
 
-  useDune2 = true;
   doCheck = true;
 
   meta = with lib; {

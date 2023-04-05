@@ -12,13 +12,13 @@ let param = {
   "0.8.1" = {
     sha256 = "sha256-pct57oO7qAMEtlvEfymFOCvviWaLG0b5/7NzTC8vdSE=";
     max_version = "4.10";
-    useDune2 = false;
+    duneVersion = "1";
     useOMP2 = false;
   };
   "0.13.0" = {
     sha256 = "sha256-geHz0whQDg5/YQjVsN2iuHlkClwh7z3Eqb2QOBzuOdk=";
     max_version = "4.11";
-    useDune2 = false;
+    duneVersion = "1";
     useOMP2 = false;
   };
   "0.15.0" = {
@@ -58,35 +58,35 @@ let param = {
 }."${version}"; in
 
 if param ? max_version && lib.versionAtLeast ocaml.version param.max_version
-|| param ? min_version && lib.versionOlder ocaml.version param.min_version
+  || param ? min_version && lib.versionOlder ocaml.version param.min_version
 then throw "ppxlib-${version} is not available for OCaml ${ocaml.version}"
 else
 
-buildDunePackage rec {
-  pname = "ppxlib";
-  inherit version;
+  buildDunePackage rec {
+    pname = "ppxlib";
+    inherit version;
 
-  duneVersion = if param.useDune2 or true then "2" else "1";
+    duneVersion = if param.duneVersion or false then param.duneVersion else "3";
 
-  src = fetchurl {
-    url = "https://github.com/ocaml-ppx/ppxlib/releases/download/${version}/ppxlib-${version}.tbz";
-    inherit (param) sha256;
-  };
+    src = fetchurl {
+      url = "https://github.com/ocaml-ppx/ppxlib/releases/download/${version}/ppxlib-${version}.tbz";
+      inherit (param) sha256;
+    };
 
-  propagatedBuildInputs = [
-    ocaml-compiler-libs
-    (if param.useOMP2 or true
-     then ocaml-migrate-parsetree-2
-     else ocaml-migrate-parsetree)
-    ppx_derivers
-    stdio
-    stdlib-shims
-  ];
+    propagatedBuildInputs = [
+      ocaml-compiler-libs
+      (if param.useOMP2 or true
+      then ocaml-migrate-parsetree-2
+      else ocaml-migrate-parsetree)
+      ppx_derivers
+      stdio
+      stdlib-shims
+    ];
 
-  meta = {
-    description = "Comprehensive ppx tool set";
-    license = lib.licenses.mit;
-    maintainers = [ lib.maintainers.vbgl ];
-    homepage = "https://github.com/ocaml-ppx/ppxlib";
-  };
-}
+    meta = {
+      description = "Comprehensive ppx tool set";
+      license = lib.licenses.mit;
+      maintainers = [ lib.maintainers.vbgl ];
+      homepage = "https://github.com/ocaml-ppx/ppxlib";
+    };
+  }

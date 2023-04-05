@@ -1,4 +1,5 @@
-{ lib, buildDunePackage
+{ lib
+, buildDunePackage
 , fetchFromGitHub
 , ppx_assert
 , ppx_bench
@@ -15,8 +16,6 @@
 buildDunePackage rec {
   pname = "ppx_bap";
   version = "0.14";
-  useDune2 = true;
-
   minimumOCamlVersion = "4.07";
 
   src = fetchFromGitHub {

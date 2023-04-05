@@ -4,12 +4,10 @@ buildDunePackage rec {
   pname = "eigen";
   version = "0.2.0";
 
-  useDune2 = true;
-
   src = fetchFromGitHub {
     owner = "owlbarn";
-    repo   = pname;
-    rev    = version;
+    repo = pname;
+    rev = version;
     sha256 = "1zaw03as14hyvfpyj6bjrfbcxp2ljdbqcqqgm53kms244mig425f";
   };
 

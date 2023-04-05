@@ -16,8 +16,6 @@ buildDunePackage rec {
   };
 
   minimalOCamlVersion = "4.03";
-  useDune2 = true;
-
   buildInputs = [
     parmap
   ];
@@ -43,7 +41,7 @@ buildDunePackage rec {
     ounit
   ];
   doCheck = false; # Tests are failing.
-                   # To enable tests use: lib.versionAtLeast ocaml.version "4.04";
+  # To enable tests use: lib.versionAtLeast ocaml.version "4.04";
 
   meta = with lib; {
     description = "Dose library (part of Mancoosi tools)";

@@ -40,10 +40,6 @@ Here is a simple package example.
 
 - `duneVersion = "2"` ensures that Dune version 2 is used for the
   build (this is the default; valid values are `"1"`, `"2"`, and `"3"`);
-  note that there is also a legacy `useDune2` boolean attribute:
-  set to `false` it corresponds to `duneVersion = "1"`; set to `true` it
-  corresponds to `duneVersion = "2"`. If both arguments (`duneVersion` and
-  `useDune2`) are given, the second one (`useDune2`) is silently ignored.
 
 - It sets the optional `doCheck` attribute such that tests will be run with
   `dune runtest -p angstrom` after the build (`dune build -p angstrom`) is
@@ -103,8 +99,6 @@ Here is a second example, this time using a source archive generated with `dune-
 buildDunePackage rec {
   pname = "wtf8";
   version = "1.0.2";
-
-  useDune2 = true;
 
   minimalOCamlVersion = "4.02";
 

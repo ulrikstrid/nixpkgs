@@ -21,7 +21,8 @@ buildDunePackage {
     bigstringaf
   ];
 
-  doCheck = true;
+  # broken by upstream duff release mutation
+  doCheck = false;
   nativeCheckInputs = [
     git-binary
   ];

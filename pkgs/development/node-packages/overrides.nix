@@ -417,6 +417,7 @@ final: prev: {
           url = "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20240129.0.tgz";
           sha512 = "sFV1uobHgDI+6CKBS/ZshQvOvajgwl6BtiYaH4PSFSpvXTmRx+A9bcug+6BnD+V4WgwxTiEO2iR97E1XuwDAVw==";
         };
+        propagatedBuildInputs = [pkgs.cacert pkgs.openssl pkgs.zlib];
       };
       linuxWorkerdArm = {
         name = "_at_cloudflare_slash_workerd-linux-arm64";

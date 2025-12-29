@@ -21,7 +21,7 @@
   gtkmm3,
   gtksourceview4,
   gdk-pixbuf,
-  imagemagick,
+  graphicsmagick,
   lcms,
   lib2geom,
   libcdr,
@@ -169,7 +169,7 @@ stdenv.mkDerivation (finalAttrs: {
     gsl
     gtkmm3
     gtksourceview4
-    imagemagick
+    graphicsmagick
     lcms
     lib2geom
     libcdr

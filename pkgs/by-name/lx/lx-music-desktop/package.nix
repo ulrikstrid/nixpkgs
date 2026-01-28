@@ -10,12 +10,12 @@
   makeWrapper,
   makeDesktopItem,
 
-  electron_37,
+  electron_40,
   commandLineArgs ? "",
 }:
 
 let
-  electron = electron_37;
+  electron = electron_40;
 in
 buildNpmPackage rec {
   pname = "lx-music-desktop";
@@ -56,6 +56,7 @@ buildNpmPackage rec {
     (replaceVars ./electron-builder.patch {
       electron_version = electron.version;
     })
+    ./electron-version.patch
   ];
 
   nativeBuildInputs = [
@@ -63,7 +64,7 @@ buildNpmPackage rec {
     copyDesktopItems
   ];
 
-  npmDepsHash = "sha256-t6I8ch36Yh6N+qZy4/yr/gSyJ3qdyMWss5LbsagEFMQ=";
+  npmDepsHash = "sha256-BmrY7IXx6Z+sBAemYnOZUBMyLInENMOB6fh/4LoV80w=";
 
   makeCacheWritable = true;
 

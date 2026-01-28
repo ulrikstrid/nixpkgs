@@ -112,6 +112,8 @@ rec {
     }
   ) { };
 
+  image-nvim = callPackage ../development/lua-modules/image-nvim { };
+
   lua-pam = callPackage (
     {
       fetchFromGitHub,

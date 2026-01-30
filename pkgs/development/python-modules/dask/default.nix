@@ -51,12 +51,6 @@ buildPythonPackage rec {
     hash = "sha256-PCxIryFPwoSQ4xUA2lM6cPVzgBvr6RYikxvpjLXxjwQ=";
   };
 
-  # https://github.com/dask/dask/issues/12043
-  postPatch = lib.optionalString (pythonAtLeast "3.14") ''
-    substituteInPlace dask/dataframe/dask_expr/tests/_util.py \
-      --replace-fail "except AttributeError:" "except (AttributeError, pickle.PicklingError):"
-  '';
-
   build-system = [
     setuptools
     setuptools-scm

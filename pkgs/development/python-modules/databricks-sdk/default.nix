@@ -8,6 +8,7 @@
 
   # dependencies
   google-auth,
+  protobuf,
   requests,
 
   # tests
@@ -37,6 +38,7 @@ buildPythonPackage rec {
 
   dependencies = [
     google-auth
+    protobuf
     requests
   ];
 

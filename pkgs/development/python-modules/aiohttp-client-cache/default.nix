@@ -11,7 +11,7 @@
   fetchPypi,
   itsdangerous,
   motor,
-  poetry-core,
+  hatchling,
   pytest-asyncio,
   pytest-aiohttp,
   pytestCheckHook,
@@ -30,7 +30,7 @@ buildPythonPackage rec {
     hash = "sha256-Mp9AOMao7QtBACOYC20aLEhK8z5meonOJFyJnWLB+6E=";
   };
 
-  build-system = [ poetry-core ];
+  build-system = [ hatchling ];
 
   dependencies = [
     aiohttp

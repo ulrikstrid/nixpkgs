@@ -3,16 +3,17 @@
   buildPythonPackage,
   fetchFromGitHub,
   gitUpdater,
-  setuptools,
+  uv-build,
   click,
-  numpy,
-  scipy,
+  quart,
   rtree,
 }:
 
 buildPythonPackage rec {
   pname = "gerbonara";
   version = "1.6.1";
+  pyproject = true;
+
   src = fetchFromGitHub {
     owner = "jaseg";
     repo = "gerbonara";
@@ -20,23 +21,13 @@ buildPythonPackage rec {
     hash = "sha256-kzEjfM9QrT+izwyCnNdN6Bv6lk1rzqs7tfDvERzJzzI=";
   };
 
-  format = "setuptools";
+  build-system = [ uv-build ];
 
-  nativeBuildInputs = [ setuptools ];
-
-  propagatedBuildInputs = [
+  dependencies = [
     click
-    numpy
-    scipy
+    quart
     rtree
   ];
-
-  preConfigure = ''
-    # setup.py tries to execute a call to git in a subprocess, this avoids it.
-    substituteInPlace setup.py \
-      --replace "version=version()," \
-                "version='${version}',"
-  '';
 
   pythonImportsCheck = [ "gerbonara" ];
 

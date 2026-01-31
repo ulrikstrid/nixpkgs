@@ -30,6 +30,12 @@ buildPythonPackage rec {
     hash = "sha256-GZQUJCiCKVthO95jHMIzNFcBM3R85BkyxO74CKCzizc=";
   };
 
+  postPatch = ''
+    # https://github.com/lanpa/tensorboardX/pull/761
+    substituteInPlace tensorboardX/utils.py tests/test_utils.py \
+      --replace-fail "newshape=" "shape="
+  '';
+
   build-system = [
     setuptools
     setuptools-scm

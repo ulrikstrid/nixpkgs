@@ -1,50 +1,40 @@
 {
   lib,
   buildPythonPackage,
-  fetchPypi,
+  fetchFromGitHub,
+  setuptools,
   imagemagick,
   feh,
-  isPy3k,
+  pytestCheckHook,
+  writableTmpDirAsHomeHook,
 }:
 
-buildPythonPackage rec {
-  pname = "pywal";
+buildPythonPackage (finalAttrs: {
+  pname = "pywal16";
   version = "3.8.13";
-  format = "setuptools";
+  pyproject = true;
 
-  src = fetchPypi {
-    inherit pname version;
-    sha256 = "sha256-eP3Tquvo6enlcyrgscMPDAKnPEkuWPKpJH7CKTNgOzA=";
+  src = fetchFromGitHub {
+    owner = "eylles";
+    repo = "pywal16";
+    tag = finalAttrs.version;
+    hash = "sha256-BKLvEmasMTcuH5olgZHzFN3DZT4lXD1FNBU8l8QGQAM=";
   };
 
-  patches = [
-    ./convert.patch
-    ./feh.patch
+  build-system = [ setuptools ];
+
+  nativeCheckInputs = [
+    feh
+    imagemagick
+    pytestCheckHook
+    writableTmpDirAsHomeHook
   ];
-
-  postPatch = ''
-    substituteInPlace pywal/backends/wal.py --subst-var-by convert "${imagemagick}/bin/convert"
-    substituteInPlace pywal/wallpaper.py --subst-var-by feh "${feh}/bin/feh"
-  '';
-
-  # Invalid syntax
-  disabled = !isPy3k;
-
-  preCheck = ''
-    mkdir tmp
-    HOME=$PWD/tmp
-
-    for f in tests/test_export.py tests/test_util.py ; do
-      substituteInPlace "$f" \
-        --replace '/tmp/' "$TMPDIR/"
-    done
-  '';
 
   meta = {
     description = "Generate and change colorschemes on the fly. A 'wal' rewrite in Python 3";
     mainProgram = "wal";
-    homepage = "https://github.com/dylanaraps/pywal";
+    homepage = "https://github.com/eylles/pywal16";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ Fresheyeball ];
   };
-}
+})

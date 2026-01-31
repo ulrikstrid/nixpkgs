@@ -15914,7 +15914,7 @@ self: super: with self; {
 
   pyw800rf32 = callPackage ../development/python-modules/pyw800rf32 { };
 
-  pywal = callPackage ../development/python-modules/pywal { };
+  pywal16 = callPackage ../development/python-modules/pywal { };
 
   pywatchman = callPackage ../development/python-modules/pywatchman { };
 

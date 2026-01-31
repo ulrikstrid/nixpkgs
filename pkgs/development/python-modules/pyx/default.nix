@@ -12,8 +12,7 @@ buildPythonPackage rec {
   disabled = !isPy3k;
 
   src = fetchPypi {
-    pname = "PyX";
-    inherit version;
+    inherit pname version;
     hash = "sha256-O8iqgJExVZ96XA4fESm0LHGt423wMyET9cV3k4SjmvE=";
   };
 

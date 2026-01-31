@@ -2,7 +2,7 @@
   lib,
   buildPythonPackage,
   fetchFromGitHub,
-  python,
+  pytestCheckHook,
   setuptools,
 }:
 
@@ -20,16 +20,9 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
+  nativeCheckInputs = [ pytestCheckHook ];
+
   pythonImportsCheck = [ "findimports" ];
-
-  checkPhase = ''
-    # Tests fails
-    rm tests/cmdline.txt
-
-    runHook preCheck
-    ${python.interpreter} testsuite.py
-    runHook postCheck
-  '';
 
   meta = {
     description = "Module for the analysis of Python import statements";

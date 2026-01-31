@@ -11,8 +11,7 @@ buildPythonPackage rec {
   format = "setuptools";
 
   src = fetchPypi {
-    pname = "WazeRouteCalculator";
-    inherit version;
+    inherit pname version;
     hash = "sha256-tJip0tSlwr7a5UVH77dAPNHag4v1JShU1vHA9xKhbwg=";
   };
 

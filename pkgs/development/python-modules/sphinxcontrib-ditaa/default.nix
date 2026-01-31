@@ -13,7 +13,8 @@ buildPythonPackage rec {
   pyproject = true;
 
   src = fetchPypi {
-    inherit pname version;
+    inherit version;
+    pname = "sphinxcontrib_ditaa";
     hash = "sha256-8O74Gyb4KxER/VlFQWwHKQQjiYNU1ch5n6eLneVHTCg=";
   };
 

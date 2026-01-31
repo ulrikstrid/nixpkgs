@@ -39,15 +39,6 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  patches = [
-    # fix tests for geos 3.14
-    # see https://github.com/geopandas/geopandas/pull/3645
-    (fetchpatch {
-      url = "https://patch-diff.githubusercontent.com/raw/geopandas/geopandas/pull/3645.patch";
-      hash = "sha256-TLJixFRR+g739PLgwhTGuwYTVJ4SRr2BMGD14CLgmcY=";
-    })
-  ];
-
   dependencies = [
     packaging
     pandas

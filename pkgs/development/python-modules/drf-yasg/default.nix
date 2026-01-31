@@ -23,13 +23,14 @@ buildPythonPackage rec {
   pyproject = true;
 
   src = fetchPypi {
-    inherit pname version;
+    inherit version;
+    pname = "drf_yasg";
     hash = "sha256-aNYtX3UFYRupV3EVyDs2IRzCDZdIpQzpWkSr5BFyfRA=";
   };
 
   postPatch = ''
-    # https://github.com/axnsan12/drf-yasg/pull/710
-    sed -i "/packaging/d" requirements/base.txt
+    substituteInPlace pyproject.toml \
+      --replace-fail "setuptools-scm ~= 7.0" "setuptools-scm >= 7.0"
   '';
 
   build-system = [

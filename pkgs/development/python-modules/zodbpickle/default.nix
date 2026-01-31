@@ -16,11 +16,6 @@ buildPythonPackage rec {
     hash = "sha256-3qcOi0CBZ9BjrCOk2vRTJGrNENvljLCmwNew+Gl+oqs=";
   };
 
-  postPatch = ''
-    substituteInPlace pyproject.toml \
-      --replace-fail "setuptools <= 75.6.0" "setuptools"
-  '';
-
   build-system = [ setuptools ];
 
   pythonImportsCheck = [ "zodbpickle" ];

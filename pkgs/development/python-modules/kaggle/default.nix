@@ -2,20 +2,17 @@
   bleach,
   buildPythonPackage,
   certifi,
-  charset-normalizer,
   fetchPypi,
   hatchling,
-  idna,
+  kagglesdk,
   lib,
+  packaging,
   python-dateutil,
   python-slugify,
   requests,
-  setuptools,
   six,
-  text-unidecode,
   tqdm,
   urllib3,
-  webencodings,
   protobuf,
 }:
 
@@ -31,21 +28,25 @@ buildPythonPackage rec {
 
   build-system = [ hatchling ];
 
+  pythonRemoveDeps = [
+    "black"
+    "mypy"
+    "types-requests"
+    "types-tqdm"
+  ];
+
   dependencies = [
     bleach
     certifi
-    charset-normalizer
-    idna
+    kagglesdk
+    packaging
+    protobuf
     python-dateutil
     python-slugify
     requests
-    setuptools
     six
-    text-unidecode
     tqdm
     urllib3
-    webencodings
-    protobuf
   ];
 
   # Tests try to access the network.

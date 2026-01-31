@@ -92,7 +92,8 @@ buildPythonPackage rec {
     "test/selenium/webdriver/firefox/ff_installs_addons_tests.py"
     # Fails to find browsers during test phase
     "test/selenium"
-  ] ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
+  ]
+  ++ lib.optionals (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isAarch64) [
     # Unsupported platform/architecture combination: linux/aarch64
     "test/unit/selenium/webdriver/common/selenium_manager_tests.py::test_errors_if_not_file"
   ];

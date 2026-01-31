@@ -14,7 +14,8 @@ buildPythonPackage rec {
   pyproject = true;
 
   src = fetchPypi {
-    inherit pname version;
+    inherit version;
+    pname = "dvc_webdav";
     hash = "sha256-PA0Er7CYWiwVbwtxn0uUN85KzTRmR9j2/uBDtekXx24=";
   };
 

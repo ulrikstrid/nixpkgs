@@ -3,37 +3,48 @@
   fetchFromGitHub,
   lib,
 
-  # Python Dependencies
-  six,
-  urllib3,
+  # build-system
+  setuptools,
+
+  # dependencies
+  asgiref,
+  httpx,
+  pydantic,
   requests,
 
   # tests
+  pytest-asyncio,
   pytestCheckHook,
   responses,
+  respx,
 }:
 
 buildPythonPackage rec {
   pname = "mixpanel";
-  version = "5.1.0";
-  format = "setuptools";
+  version = "5.0.0";
+  pyproject = true;
 
   src = fetchFromGitHub {
     owner = "mixpanel";
     repo = "mixpanel-python";
     tag = "v${version}";
-    hash = "sha256-B87i6wwI/JpZXY58mk7CC+9+Q0w6UwxYX/h/fp2m9aQ=";
+    hash = "sha256-Q8Kn2dyID1hYjKmEv0e+R/y5dsp/JEkqCdNqQHJsOrI=";
   };
 
-  propagatedBuildInputs = [
+  build-system = [ setuptools ];
+
+  dependencies = [
+    asgiref
+    httpx
+    pydantic
     requests
-    six
-    urllib3
   ];
 
   nativeCheckInputs = [
+    pytest-asyncio
     pytestCheckHook
     responses
+    respx
   ];
 
   meta = {

@@ -10,8 +10,7 @@ buildPythonPackage rec {
   format = "setuptools";
 
   src = fetchPypi {
-    pname = "PyPlatec";
-    inherit version;
+    inherit pname version;
     sha256 = "sha256-PXQlJtC4Z0ifphqTelOuBQS5wubxCH/f0PSWnE7OeNg=";
   };
 

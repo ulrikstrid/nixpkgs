@@ -5,6 +5,7 @@
   setuptools,
   packaging,
   pycryptodome,
+  requests,
 }:
 
 buildPythonPackage rec {
@@ -24,6 +25,7 @@ buildPythonPackage rec {
   dependencies = [
     packaging
     pycryptodome
+    requests
   ];
 
   # no tests

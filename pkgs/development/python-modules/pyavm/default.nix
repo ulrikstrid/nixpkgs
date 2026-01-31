@@ -20,8 +20,7 @@ buildPythonPackage rec {
   pyproject = true;
 
   src = fetchPypi {
-    pname = "PyAVM";
-    inherit version;
+    inherit pname version;
     hash = "sha256-zhHCeex1vfgj0MOGEkoVKKXns2+l3U0mSZInk58Rf4g=";
   };
 

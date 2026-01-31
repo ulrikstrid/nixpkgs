@@ -45,7 +45,10 @@ let
     };
 
     postPatch = ''
-      patchShebangs skimage/_build_utils/{version,cythoner}.py
+      patchShebangs src/skimage/_build_utils/{version,cythoner}.py
+
+      substituteInPlace src/skimage/_build_utils/version.py \
+        --replace-fail "version = version_from_init()" "version = \"${version}\""
     '';
 
     nativeBuildInputs = [

@@ -20,6 +20,7 @@
   protobuf,
   pyflakes,
   pyrsistent,
+  pytest-asyncio,
   pytestCheckHook,
   pyyaml,
   rdkafka,
@@ -87,6 +88,7 @@ buildPythonPackage rec {
     cachetools
     orjson
     pyflakes
+    pytest-asyncio
     pytestCheckHook
     requests-mock
     respx

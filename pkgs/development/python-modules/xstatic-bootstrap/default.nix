@@ -10,9 +10,9 @@ buildPythonPackage rec {
   format = "setuptools";
 
   src = fetchPypi {
-    pname = "XStatic-Bootstrap";
+    pname = "xstatic_bootstrap";
     inherit version;
-    sha256 = "sha256-BPXMlbvlQ40ehR0GxMoa1/hL02oJtN5aH1S1JOhQaFk=";
+    hash = "sha256-BPXMlbvlQ40ehR0GxMoa1/hL02oJtN5aH1S1JOhQaFk=";
   };
 
   # no tests implemented

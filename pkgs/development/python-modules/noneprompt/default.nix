@@ -2,7 +2,7 @@
   buildPythonPackage,
   fetchPypi,
   lib,
-  poetry-core,
+  uv-build,
   prompt-toolkit,
 }:
 
@@ -16,7 +16,12 @@ buildPythonPackage rec {
     hash = "sha256-aCJpGPKhVDqjgMqtpcOArlyjj1cpInjFv9O3KJ8axts=";
   };
 
-  build-system = [ poetry-core ];
+  postPatch = ''
+    substituteInPlace pyproject.toml \
+      --replace-fail "uv_build >=0.8.3, <0.9.0" uv_build
+  '';
+
+  build-system = [ uv-build ];
 
   dependencies = [ prompt-toolkit ];
 

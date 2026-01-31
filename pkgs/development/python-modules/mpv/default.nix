@@ -3,9 +3,9 @@
   stdenv,
   buildPythonPackage,
   fetchFromGitHub,
-  fetchpatch,
   mpv,
   setuptools,
+  pytestCheckHook,
 }:
 
 buildPythonPackage rec {
@@ -20,23 +20,17 @@ buildPythonPackage rec {
     hash = "sha256-MHdQnnjxnbOkIf56VLGi7vgNbrjhU/ODUBdZoXjxXxE=";
   };
 
-  patches = [
-    # https://github.com/jellyfin/jellyfin-mpv-shim/issues/448
-    (fetchpatch {
-      url = "https://github.com/jaseg/python-mpv/commit/12850b34bd3b64704f8abd30341a647a73719267.patch";
-      hash = "sha256-2O7w8PeWinCzrigGX3IV+9PVCtU9KCM2UJ32Y1kE6m0=";
-    })
-  ];
-
-  nativeBuildInputs = [ setuptools ];
-
-  buildInputs = [ mpv ];
-
   postPatch = ''
     substituteInPlace mpv.py \
       --replace-fail "sofile = ctypes.util.find_library('mpv')" \
                      'sofile = "${mpv}/lib/libmpv${stdenv.hostPlatform.extensions.sharedLibrary}"'
   '';
+
+  build-system = [ setuptools ];
+
+  buildInputs = [ mpv ];
+
+  nativeCheckInputs = [ pytestCheckHook ];
 
   pythonImportsCheck = [ "mpv" ];
 

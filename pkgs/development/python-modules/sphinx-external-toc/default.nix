@@ -6,6 +6,7 @@
   click,
   pyyaml,
   sphinx,
+  sphinx-multitoc-numbering,
 }:
 
 buildPythonPackage rec {
@@ -26,6 +27,7 @@ buildPythonPackage rec {
     click
     pyyaml
     sphinx
+    sphinx-multitoc-numbering
   ];
 
   pythonImportsCheck = [ "sphinx_external_toc" ];

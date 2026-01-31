@@ -2,7 +2,7 @@
   lib,
   buildPythonPackage,
   fetchPypi,
-  poetry-core,
+  hatchling,
   psycopg,
 }:
 
@@ -18,7 +18,7 @@ buildPythonPackage rec {
   };
 
   build-system = [
-    poetry-core
+    hatchling
   ];
 
   dependencies = [

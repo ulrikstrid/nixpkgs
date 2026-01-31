@@ -3,6 +3,7 @@
   buildPythonPackage,
   fetchFromGitHub,
   setuptools,
+  setuptools-rust,
   pytestCheckHook,
 }:
 
@@ -18,7 +19,10 @@ buildPythonPackage rec {
     hash = "sha256-lKyVl+vHVgrDL9JAOodF+4b0kqQAgR0neFPBRaCNAY4=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+    setuptools-rust
+  ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 

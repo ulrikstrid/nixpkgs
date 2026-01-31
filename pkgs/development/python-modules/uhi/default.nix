@@ -1,12 +1,20 @@
 {
   lib,
   fetchPypi,
+  boost-histogram,
   buildPythonPackage,
+  h5py,
   hatchling,
   hatch-vcs,
+  hist,
   fastjsonschema,
   numpy,
+  packaging,
   pytestCheckHook,
+  pythonOlder,
+  tomli,
+  typing-extensions,
+  uhi,
 }:
 
 buildPythonPackage rec {
@@ -25,11 +33,29 @@ buildPythonPackage rec {
   ];
 
   dependencies = [
-    fastjsonschema
     numpy
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [
+    typing-extensions
   ];
 
-  checkInputs = [ pytestCheckHook ];
+  optional-dependencies = {
+    schema = [ fastjsonschema ];
+    hdf5 = [ h5py ];
+  };
+
+  doCheck = false; # Prevents infinite recursion; use passthru.tests instead
+
+  nativeCheckInputs = [
+    boost-histogram
+    hist
+    fastjsonschema
+    packaging
+    pytestCheckHook
+  ]
+  ++ lib.optionals (pythonOlder "3.11") [ tomli ];
+
+  passthru.tests.uhi = uhi.overridePythonAttrs { doCheck = true; };
 
   meta = {
     description = "Universal Histogram Interface";

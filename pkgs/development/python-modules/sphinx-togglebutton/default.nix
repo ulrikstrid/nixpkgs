@@ -14,7 +14,8 @@ buildPythonPackage rec {
   pyproject = true;
 
   src = fetchPypi {
-    inherit pname version;
+    inherit version;
+    pname = "sphinx_togglebutton";
     hash = "sha256-BMMyaS/V9TY60CoAHmkzaXZ9bB8OWCeXcKKutXG0cqE=";
   };
 

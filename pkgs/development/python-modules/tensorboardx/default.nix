@@ -1,15 +1,16 @@
 {
   boto3,
   buildPythonPackage,
-  crc32c,
   fetchFromGitHub,
   lib,
   matplotlib,
   moto,
   numpy,
+  packaging,
   protobuf,
   pytestCheckHook,
   torch,
+  setuptools,
   setuptools-scm,
   soundfile,
   stdenv,
@@ -20,7 +21,7 @@
 buildPythonPackage rec {
   pname = "tensorboardx";
   version = "2.6.4";
-  format = "setuptools";
+  pyproject = true;
 
   src = fetchFromGitHub {
     owner = "lanpa";
@@ -29,16 +30,17 @@ buildPythonPackage rec {
     hash = "sha256-GZQUJCiCKVthO95jHMIzNFcBM3R85BkyxO74CKCzizc=";
   };
 
-  nativeBuildInputs = [
-    protobuf
+  build-system = [
+    setuptools
     setuptools-scm
   ];
 
   # required to make tests deterministic
   env.PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "python";
 
-  propagatedBuildInputs = [
-    crc32c
+  dependencies = [
+    packaging
+    protobuf
     numpy
   ];
 

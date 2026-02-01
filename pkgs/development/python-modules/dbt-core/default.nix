@@ -4,7 +4,7 @@
   fetchFromGitHub,
 
   # build-system
-  setuptools,
+  hatchling,
 
   # dependencies
   agate,
@@ -60,11 +60,12 @@ buildPythonPackage rec {
     "pathspec"
     "protobuf"
     "pydantic"
+    "sqlparse"
     "urllib3"
   ];
 
   build-system = [
-    setuptools
+    hatchling
   ];
 
   dependencies = [

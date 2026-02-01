@@ -4,7 +4,7 @@
   django-stubs-ext,
   django,
   fetchFromGitHub,
-  hatchling,
+  uv-build,
   redis,
   mypy,
   pytest-mypy-plugins,
@@ -30,7 +30,7 @@ buildPythonPackage rec {
     hash = "sha256-42FluS2fmfgj4qk2u+Z/7TGhXY4WKUc0cI00go6rnGc=";
   };
 
-  build-system = [ hatchling ];
+  build-system = [ uv-build ];
 
   dependencies = [
     django

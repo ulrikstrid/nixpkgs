@@ -34,6 +34,8 @@ let
           inherit version;
           hash = "sha256-hOXkMINaSwzU/SpXzjhTJp0ds0OREc2mtu11LjSc9KE=";
         };
+
+        build-system = with self; [ setuptools ];
       };
 
       pretix = self.toPythonModule pretix;

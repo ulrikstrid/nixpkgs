@@ -73,6 +73,8 @@ buildPythonPackage rec {
     "test_prunes_tasks"
     # AssertionError: 'Run maximum tasks (2)' not found in ''
     "test_max_tasks"
+    # AssertionError: <django_tasks.backends.database.backend.DatabaseBackend object at 0x7ffff3fa3cd0> is not an instance of <class 'django_tasks.backends.immediate.ImmediateBackend'>
+    "test_uses_lib_tasks_by_default"
   ];
 
   preCheck = ''

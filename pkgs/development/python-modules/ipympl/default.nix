@@ -77,6 +77,7 @@ buildPythonPackage (finalAttrs: {
   ];
 
   meta = {
+    changelog = "https://github.com/matplotlib/ipympl/releases/tag/${finalAttrs.src.tag}";
     description = "Matplotlib Jupyter Extension";
     homepage = "https://github.com/matplotlib/jupyter-matplotlib";
     maintainers = with lib.maintainers; [

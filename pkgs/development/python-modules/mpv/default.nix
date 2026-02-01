@@ -6,6 +6,7 @@
   mpv,
   setuptools,
   pytestCheckHook,
+  pyvirtualdisplay,
 }:
 
 buildPythonPackage rec {
@@ -30,7 +31,10 @@ buildPythonPackage rec {
 
   buildInputs = [ mpv ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+    pyvirtualdisplay
+  ];
 
   pythonImportsCheck = [ "mpv" ];
 

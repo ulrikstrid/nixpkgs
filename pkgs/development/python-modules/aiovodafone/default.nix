@@ -8,9 +8,11 @@
   fetchFromGitHub,
   orjson,
   poetry-core,
+  pycryptodome,
   pytest-cov-stub,
   pytestCheckHook,
   pythonOlder,
+  segno,
 }:
 
 buildPythonPackage rec {
@@ -35,6 +37,8 @@ buildPythonPackage rec {
     cryptography
     colorlog
     orjson
+    pycryptodome
+    segno
   ];
 
   nativeCheckInputs = [

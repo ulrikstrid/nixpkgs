@@ -3,9 +3,8 @@
   buildPythonPackage,
   fetchFromGitHub,
   h5py,
+  netcdf,
   pytestCheckHook,
-  netcdf4,
-  pythonOlder,
   setuptools,
   setuptools-scm,
 }:
@@ -30,8 +29,8 @@ buildPythonPackage rec {
   dependencies = [ h5py ];
 
   nativeCheckInputs = [
+    netcdf
     pytestCheckHook
-    netcdf4
   ];
 
   pythonImportsCheck = [ "h5netcdf" ];

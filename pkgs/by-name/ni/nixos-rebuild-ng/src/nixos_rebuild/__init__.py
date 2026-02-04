@@ -351,7 +351,7 @@ def main() -> None:
     try:
         execute(sys.argv)
     except CalledProcessError as ex:
-        _handle_called_process_error(ex)
+        sys.exit(_handle_called_process_error(ex))
     except (Exception, KeyboardInterrupt) as ex:
         if logger.isEnabledFor(logging.DEBUG):
             raise
@@ -359,11 +359,9 @@ def main() -> None:
             sys.exit(str(ex))
 
 
-def _handle_called_process_error(ex: CalledProcessError) -> None:
+def _handle_called_process_error(ex: CalledProcessError) -> int:
     if logger.isEnabledFor(logging.DEBUG):
-        import traceback
-
-        traceback.print_exception(ex)
+        sys.excepthook(*sys.exc_info())
     else:
         import shlex
 
@@ -384,4 +382,4 @@ def _handle_called_process_error(ex: CalledProcessError) -> None:
         print(str(ex), file=sys.stderr)
 
     # Exit with the error code of the process that failed
-    sys.exit(ex.returncode)
+    return ex.returncode

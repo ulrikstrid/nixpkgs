@@ -32,6 +32,8 @@ buildGoModule (finalAttrs: {
     versionCheckHook
   ];
 
+  __darwinAllowLocalNetworking = true;
+
   meta = {
     homepage = "https://github.com/fleetdm/fleet";
     changelog = "https://github.com/fleetdm/fleet/releases/tag/fleet-v${finalAttrs.version}";
